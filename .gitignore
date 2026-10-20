@@ -1,0 +1,30 @@
+# Private: the ADB key the TV trusts. Never publish it.
+tools/adbkey/
+adbkey
+adbkey.pub
+
+# Device snapshots and raw screenshots: serial number, Android ID, Bluetooth MAC, Wi-Fi name
+backup/
+screens/
+
+# Python
+tools/venv/
+__pycache__/
+*.pyc
+
+# Android / Gradle build output and machine-specific paths
+launcher/.gradle/
+launcher/build/
+launcher/app/build/
+launcher/local.properties
+*.apk
+*.aab
+
+# Logs written by the laptop scripts
+laptop/scripts/*.txt
+
+# Editor / OS
+.vscode/
+.idea/
+Thumbs.db
+desktop.ini

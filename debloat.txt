@@ -1,0 +1,63 @@
+# OnePlus TV Y1S (model D00, codename Dubai), Android TV 11, firmware RTM1.210315.027, 920 MB RAM
+# Live TV app: com.heytap.tv.livetv. Stock launcher: com.google.android.tvlauncher.
+#
+# Everything here is DISABLED for user 0 (pm disable-user --user 0), never uninstalled.
+# Undo all of it:  tools\restore.ps1      (or: tools/venv/Scripts/python.exe -I tools/restore.py)
+# Re-enable one:   tools\tv.ps1 "pm enable --user 0 <package>"
+# Comment a line out (#) to keep that package next time the list is applied.
+#
+# Already disabled before we started (left as they were, restore does not touch them):
+#   com.heytap.olink, com.oneplus.tv.remote
+#
+# Kept on purpose, the TV needs them: com.heytap.tv.livetv (Live TV + source list),
+# com.mediatek.tvinput (HDMI/AV/tuner), com.mediatek.tv.service (hot keys, Netflix key),
+# com.google.android.tv.remote.service (remote), com.android.bluetooth, Gboard, Play Store,
+# Play Services, TV Settings, com.google.android.tungsten.setupwraith (on this firmware it hosts
+# system updates, saved Wi-Fi and remote pairing, and does not claim HOME), factory menus.
+# Kept because unclear: com.heytap.tvapiservice (log upload, but also auto-standby / kids mode /
+# far-field mic, and it runs com.heytap.optvbtlink.services.BTDetectService, a Bluetooth link service
+# that likely serves the remote: do not disable), com.heytap.tv.remotecontrolinspect.
+# Kept by choice: Chromecast (com.google.android.apps.mediashell), File Manager
+# (com.heytap.tv.filebrowser), Bluetooth Stereo (com.heytap.tv.btspeaker), Netflix, Prime Video,
+# YouTube, YouTube Music, JioHotstar, ZEE5, Crunchyroll.
+
+## Batch 1: telemetry and analytics
+com.google.android.feedback                 # Google feedback / crash reports
+com.google.android.partnersetup             # Google RLZ partner-attribution pings
+com.heytap.tv.remotediagnosing              # "Remote diagnosis": OnePlus remote support / log tool
+
+## Batch 2: OnePlus content and ad services
+android.autoinstalls.config.OnePlus         # Play auto-install of partner apps
+com.oneplus.tv.launcher                     # OxygenPlay content page (tracking providers)
+com.oneplus.tv.android.account              # OnePlus account, used only by OxygenPlay
+
+## Batch 3: background services
+com.heytap.tv.assistant.oneplus             # "Smart Manager": cleaner / bandwidth monitor
+com.oplus.onet                              # ONet: phone-link backend for OnePlus Connect
+oneplus.smarthome                           # smart-home / kids-mode login receivers
+
+## Batch 4: features not used (your checklist)
+com.google.android.katniss                  # Google Assistant / voice search (mic button)
+com.heytap.optvmiracastservice              # Miracast (iPhones cannot use it)
+com.mediatek.androidbox                     # "Wi-Fi Display Sink", the Miracast receiver
+com.heytap.oprcupgradeservice               # remote-control firmware updater
+
+## Batch 5: preloaded apps (your checklist)
+com.oneplus.tv.screensaver                  # Pictorial screensaver (launcher has a Clock one)
+com.google.android.backdrop                 # Ambient mode screensaver
+com.oneplus.tv.userguide                    # E-manual
+com.jio.web.androidtv                       # JioPages browser
+com.jiostb.jiogames                         # Jio Games
+com.google.android.play.games               # Google Play Games
+com.google.android.videos                   # Google Play Movies & TV
+
+## Batch 6: streaming apps not used (your checklist)
+com.spotify.tv.android                      # Spotify
+com.jio.media.stb.ondemand                  # JioCinema
+tv.airtel.xstream.tvapp                     # Airtel Xstream
+com.lionsgateplay.videoapp                  # Lionsgate Play
+
+## Batch 7: stock launcher, applied only after the new launcher owns Home
+com.google.android.tvlauncher               # stock Android TV home
+com.google.android.tvrecommendations        # its recommendation rows
+com.mediatek.android.leanbacklauncher.partnercustomizer   # partner rows for the stock home
